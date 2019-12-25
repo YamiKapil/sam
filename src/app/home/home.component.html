@@ -1,0 +1,80 @@
+<GridLayout rows="auto,*">
+  <StackLayout row="0">
+    <ActionBar backgroundcolor="white" title="ActionBar Title">
+      <ActionItem
+        text="Login or Create Account"
+        android.position="popup"
+      ></ActionItem>
+      <ActionItem text="Subscribe" android.position="popup"></ActionItem>
+      <ActionItem text="Settings" android.position="popup"></ActionItem>
+      <ActionItem text="Notifications" android.position="popup"></ActionItem>
+      <ActionItem text="Help" android.position="popup"></ActionItem>
+      <ActionItem text="FAQ" android.position="popup"></ActionItem>
+      <ActionItem text="About" android.position="popup"></ActionItem>
+      <ActionItem text="Privacy Policy" android.position="popup"></ActionItem>
+      <ActionItem text="Terms of Service" android.position="popup"></ActionItem>
+      <ActionItem text="Contact Us" android.position="popup"></ActionItem>
+
+      <NavigationButton
+        icon="res://ic_menu"
+        (tap)="onDrawerButtonTap()"
+      ></NavigationButton>
+
+      <Image src="res://logo1"></Image>
+    </ActionBar>
+
+    <TabView
+      selectedTabTextColor="gold"
+      androidSelectedTabHighlightColor="gold"
+      tabBackgroundColor="white"
+    >
+      <StackLayout *tabItem="{ title: 'Top News' }"></StackLayout>
+      <StackLayout *tabItem="{ title: 'Afganisthan' }"></StackLayout>
+      <StackLayout *tabItem="{ title: 'Bangladesh' }"></StackLayout>
+      <StackLayout *tabItem="{ title: 'Bhutan' }"></StackLayout>
+    </TabView>
+  </StackLayout>
+
+  <ScrollView row="1">
+    <StackLayout>
+      <ListView [items]="items" >
+        <ng-template let-item="item" let-i="index">
+          <StackLayout>
+              <GridLayout>
+                <Image [src]="item.urlToImage" ></Image>
+              </GridLayout>
+            <StackLayout>
+              <Label [text]="item.title" textWrap="true"></Label>
+            </StackLayout>
+            <StackLayout>
+              <Label [text]="item.detail" textWrap="true"></Label>
+            </StackLayout>
+            <StackLayout>
+              <GridLayout columns="*,*">
+                <StackLayout row="0" col="0">
+                  <Label
+                    [text]="item.timestamp"
+                    |
+                    [text]="item.author"
+                    textWrap="true"
+                  ></Label>
+                </StackLayout>
+
+                <StackLayout row="0" col="1">
+                  <GridLayout columns="*,*" marginleft="140">
+                    <StackLayout row="0" col="0">
+                      <Label text="bookmark"></Label>
+                    </StackLayout>
+                    <StackLayout row="0" col="1">
+                      <Label text="share"></Label>
+                    </StackLayout>
+                  </GridLayout>
+                </StackLayout>
+              </GridLayout>
+            </StackLayout>
+          </StackLayout>
+        </ng-template>
+      </ListView>
+    </StackLayout>
+  </ScrollView>
+</GridLayout>
